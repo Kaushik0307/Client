@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import { useState } from "react";
 import Chat from './Chats';
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect(process.env.REACT_APP_BACKEND_URL);
 
 function App() {
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ function App() {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
       setShowChat(true);
-    }
+;   }
   };
 
   return (
